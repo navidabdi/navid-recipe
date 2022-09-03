@@ -1,33 +1,33 @@
 import { useEffect, useState } from "react";
-import { RecipeCard } from "./components";
+import { RecipeCard, RecipeSlider } from "./components";
 
 const App = () => {
-  const getRecipes = async () => {
-    const localData = localStorage.getItem("random");
-
-    if (localData) {
-      setRecipes(JSON.parse(localData));
-    } else {
-      const api = await fetch(
-        `https://api.spoonacular.com/recipes/random?number=12&apiKey=${process.env.REACT_APP_RECIPE_API}`,
-      );
-      const data = await api.json();
-      localStorage.setItem("random", JSON.stringify(data.recipes));
-      setRecipes(data.recipes);
-      console.log(data.recipes);
-    }
-  };
+  const [recipes, setRecipes] = useState([]);
+  // const data = useRecipe();
 
   useEffect(() => {
-    getRecipes();
-  }, []);
+    const getRandomRecipe = async () => {
+      const localData = localStorage.getItem("random");
 
-  const [recipes, setRecipes] = useState({});
+      const url = `https://api.spoonacular.com/recipes/random?number=12&apiKey=${process.env.REACT_APP_RECIPE_API}`;
+
+      if (localData) {
+        setRecipes(JSON.parse(localData));
+      } else {
+        const api = await fetch(url);
+        const data = await api.json();
+        localStorage.setItem("random", JSON.stringify(data.recipes));
+        console.log(data.recipes);
+        setRecipes(data.recipes);
+      }
+    };
+    getRandomRecipe();
+  }, []);
 
   return (
     <div className="App">
+      <RecipeSlider recipes={recipes} />
       <RecipeCard recipes={recipes} />
-      {console.log(recipes)}
     </div>
   );
 };
