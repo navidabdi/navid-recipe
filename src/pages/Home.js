@@ -27,7 +27,6 @@ const Home = () => {
     <div>
       <RecipeSlider recipes={recipes} />
       <RecipeCard recipes={recipes} />
-      <RecipeCard recipes={recipes} />
     </div>
   );
 };
