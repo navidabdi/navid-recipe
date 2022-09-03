@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { RecipeCard, RecipeSlider } from "./components";
+import { RecipeCard, RecipeSlider, Header } from "./components";
 
 const App = () => {
   const [recipes, setRecipes] = useState([]);
@@ -26,6 +26,7 @@ const App = () => {
 
   return (
     <div className="App">
+      <Header />
       <RecipeSlider recipes={recipes} />
       <RecipeCard recipes={recipes} />
     </div>
