@@ -3,7 +3,7 @@ import { BsSearch } from "react-icons/bs";
 
 const Header = () => {
   return (
-    <header className="py-3 flex justify-between items-center">
+    <header className="py-3 px-1 flex justify-between items-center">
       <div className="flex items-center space-x-1 w-[40%] ">
         <GiFullPizza className="text-2xl text-green-600" />
         <p className="font-bold text-green-900">Navid Recipe</p>
