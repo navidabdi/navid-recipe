@@ -9,6 +9,7 @@ import "swiper/css/navigation";
 
 import { GiEmptyHourglass } from "react-icons/gi";
 import { FaHeartbeat } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const RecipeSlider = ({ recipes }) => {
   return (
@@ -40,31 +41,33 @@ const RecipeSlider = ({ recipes }) => {
         {recipes.length > 0
           ? recipes.map((recipe) => (
               <SwiperSlide key={recipe.id}>
-                <article className="rounded-xl overflow-hidden bg-white">
-                  <div className="relativ">
-                    <div className="absolute rounded-xl inset-0 bg-black/40"></div>
-                    <img
-                      className="w-full h-[180px] md:h-[250px] object-cover"
-                      src={recipe.image}
-                      alt={recipe.title}
-                    />
-                    <div className="md:p-5 w-[75%] absolute left-[50%] z-10 top-[50%] translate-x-[-50%] translate-y-[-50%] flex flex-col ">
-                      <ul className="flex items-center gap-3 mb-1 md:mb-2 text-white">
-                        <li className="flex gap-1 items-center text-sm md:text-md">
-                          <GiEmptyHourglass className="text-white" />
-                          <p>{recipe.readyInMinutes}</p>
-                        </li>
-                        <li className="flex gap-1 items-center text-sm md:text-md">
-                          <FaHeartbeat className="text-white" />
-                          <p>{recipe.healthScore}</p>
-                        </li>
-                      </ul>
-                      <h3 className="text-md font-bold text-white  md:text-xl">
-                        {recipe.title}
-                      </h3>
+                <Link to={`detail/${recipe.id}`}>
+                  <article className="rounded-xl overflow-hidden bg-white">
+                    <div className="relativ">
+                      <div className="absolute rounded-xl inset-0 bg-black/40"></div>
+                      <img
+                        className="w-full h-[180px] md:h-[250px] object-cover"
+                        src={recipe.image}
+                        alt={recipe.title}
+                      />
+                      <div className="md:p-5 w-[75%] absolute left-[50%] z-10 top-[50%] translate-x-[-50%] translate-y-[-50%] flex flex-col ">
+                        <ul className="flex items-center gap-3 mb-1 md:mb-2 text-white">
+                          <li className="flex gap-1 items-center text-sm md:text-md">
+                            <GiEmptyHourglass className="text-white" />
+                            <p>{recipe.readyInMinutes}</p>
+                          </li>
+                          <li className="flex gap-1 items-center text-sm md:text-md">
+                            <FaHeartbeat className="text-white" />
+                            <p>{recipe.healthScore}</p>
+                          </li>
+                        </ul>
+                        <h3 className="text-md font-bold text-white  md:text-xl">
+                          {recipe.title}
+                        </h3>
+                      </div>
                     </div>
-                  </div>
-                </article>
+                  </article>
+                </Link>
               </SwiperSlide>
             ))
           : ""}

@@ -17,7 +17,7 @@ const Details = () => {
   return (
     <div className="md:w-[60%] md:mx-auto lg:w-[40%]">
       {detail && (
-        <div className="bg-white m-1 p-4 rounded-md">
+        <div className="bg-white p-4 rounded-md">
           <div>
             <img
               className="w-full rounded-lg"
