@@ -3,7 +3,6 @@ import { RecipeCard, RecipeSlider } from "../components";
 
 const Home = () => {
   const [recipes, setRecipes] = useState([]);
-  // const data = useRecipe();
 
   useEffect(() => {
     const getRandomRecipe = async () => {
