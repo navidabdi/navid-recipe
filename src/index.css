@@ -12,7 +12,7 @@ body {
   background: rgb(232, 247, 255);
 }
 .swiper {
-  padding: 0 10px;
+  padding: 0 8px !important;
 }
 
 .swiper-button-next,

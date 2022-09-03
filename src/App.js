@@ -26,7 +26,6 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1>Hello React!</h1>
       <RecipeCard recipes={recipes} />
       {console.log(recipes)}
     </div>
