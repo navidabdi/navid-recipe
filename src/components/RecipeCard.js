@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const RecipeCard = ({ recipes }) => {
   return (
-    <div className="my-5 grid overflow-hidden grid-cols-2 auto-rows-auto gap-4 grid-flow-row md:grid-cols-4">
+    <div className="my-3 grid overflow-hidden grid-cols-2 auto-rows-auto gap-4 grid-flow-row md:grid-cols-4">
       {recipes.length > 0
         ? recipes.map((recipe) => (
             <Link to={`detail/${recipe.id}`} key={recipe.id}>

@@ -12,7 +12,7 @@ import { FaHeartbeat } from "react-icons/fa";
 
 const RecipeSlider = ({ recipes }) => {
   return (
-    <div className="my-10">
+    <div className="my-5">
       <Swiper
         modules={[Navigation]}
         spaceBetween={15}

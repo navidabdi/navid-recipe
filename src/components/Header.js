@@ -9,8 +9,11 @@ const Header = () => {
         <p className="font-bold text-green-900">Navid Recipe</p>
       </Link>
       <div className="w-[60%] px-3 py-2 md:w-[40%] rounded-md flex items-center justify-between bg-slate-200">
-        <input className="outline-none bg-transparent flex-grow" type="text" />
-        <BsSearch className="text-green-900" />
+        <input
+          className="outline-none bg-transparent w-[90%] md:w-auto"
+          type="text"
+        />
+        <BsSearch className="text-green-900 w-[10%] md:w-auto" />
       </div>
     </header>
   );
