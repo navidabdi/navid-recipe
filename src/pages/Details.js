@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { AiOutlineCheck } from "react-icons/ai";
+import { motion } from "framer-motion";
+
 const Details = () => {
   const [detail, setDetail] = useState([]);
   const { id } = useParams();
@@ -15,7 +17,13 @@ const Details = () => {
   }, [id]);
 
   return (
-    <div className="md:w-[60%] md:mx-auto lg:w-[40%]">
+    <motion.div
+      animate={{ opacity: 1 }}
+      initial={{ opacity: 0 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.8 }}
+      className="md:w-[60%] md:mx-auto"
+    >
       {detail && (
         <div className="bg-white p-4 rounded-md">
           <div>
@@ -50,7 +58,7 @@ const Details = () => {
       )}
 
       <div>{console.log(detail)}</div>
-    </div>
+    </motion.div>
   );
 };
 

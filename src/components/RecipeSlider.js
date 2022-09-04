@@ -1,6 +1,6 @@
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-
+import { motion } from "framer-motion";
 import { Navigation } from "swiper";
 
 // Import Swiper styles
@@ -13,7 +13,13 @@ import { Link } from "react-router-dom";
 
 const RecipeSlider = ({ recipes }) => {
   return (
-    <div className="my-5">
+    <motion.div
+      animate={{ opacity: 1 }}
+      initial={{ opacity: 0 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.8 }}
+      className="my-5"
+    >
       <Swiper
         modules={[Navigation]}
         spaceBetween={15}
@@ -72,7 +78,7 @@ const RecipeSlider = ({ recipes }) => {
             ))
           : ""}
       </Swiper>
-    </div>
+    </motion.div>
   );
 };
 

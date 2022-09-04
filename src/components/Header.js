@@ -2,22 +2,22 @@ import { GiFullPizza } from "react-icons/gi";
 import { BsSearch } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+
 const Header = () => {
   const [search, setSearch] = useState([]);
   const [query, setQuery] = useState("");
 
   useEffect(() => {
-    const getSearch = async () => {
-      const url = `https://api.spoonacular.com/recipes/complexSearch?number=12&query=${query}&apiKey=${process.env.REACT_APP_RECIPE_API}`;
-      const api = await fetch(url);
-      const data = await api.json();
-      setSearch(data.results);
-    };
-
     const delayDebounceFn = setTimeout(() => {
-      console.log(query);
+      const getSearch = async () => {
+        const url = `https://api.spoonacular.com/recipes/complexSearch?number=12&query=${query}&apiKey=${process.env.REACT_APP_RECIPE_API}`;
+        const api = await fetch(url);
+        const data = await api.json();
+        setSearch(data.results);
+      };
       getSearch();
-    }, 1000);
+    }, 1500);
     return () => clearTimeout(delayDebounceFn);
   }, [query]);
 
@@ -33,17 +33,26 @@ const Header = () => {
             className="outline-none bg-transparent w-[90%] md:w-auto"
             type="text"
             onChange={(e) => setQuery(e.target.value)}
+            value={query}
           />
           <BsSearch className="text-green-900 w-[10%] md:w-auto" />
         </div>
         {query && (
-          <div className="bg-white absolute z-10 w-full shadow-lg mt-1 rounded-lg">
+          <motion.div
+            animate={{ opacity: 1 }}
+            initial={{ opacity: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.8 }}
+            className="bg-white absolute z-10 w-full shadow-lg mt-1 rounded-lg max-h-64 scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-100"
+          >
             {search && (
-              <ul>
+              <div>
                 {search.map((searchItem) => (
-                  <li
+                  <Link
+                    to={`detail/${searchItem.id}`}
                     className="flex items-center px-4 py-2 space-x-2 border-b hover:bg-green-100"
                     key={searchItem.id}
+                    onClick={() => setQuery("")}
                   >
                     <img
                       className="w-8 h-8 rounded-full object-cover"
@@ -51,11 +60,11 @@ const Header = () => {
                       alt={searchItem.title}
                     />
                     <p className="truncate">{searchItem.title}</p>
-                  </li>
+                  </Link>
                 ))}
-              </ul>
+              </div>
             )}
-          </div>
+          </motion.div>
         )}
       </div>
     </header>

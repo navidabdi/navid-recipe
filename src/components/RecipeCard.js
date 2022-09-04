@@ -2,14 +2,21 @@ import { GiEmptyHourglass } from "react-icons/gi";
 import { FaHeartbeat } from "react-icons/fa";
 
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const RecipeCard = ({ recipes }) => {
   return (
-    <div className="my-3 grid overflow-hidden grid-cols-2 auto-rows-auto gap-4 grid-flow-row md:grid-cols-4">
+    <motion.div
+      animate={{ opacity: 1 }}
+      initial={{ opacity: 0 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.8 }}
+      className="con my-3 grid overflow-hidden grid-cols-2 auto-rows-auto gap-4 grid-flow-row md:grid-cols-4"
+    >
       {recipes.length > 0
         ? recipes.map((recipe) => (
             <Link to={`detail/${recipe.id}`} key={recipe.id}>
-              <article className="rounded-xl overflow-hidden bg-white">
+              <article className=" rounded-xl overflow-hidden bg-white">
                 <img
                   className="w-full h-[110px] md:h-[200px] object-cover"
                   src={recipe.image}
@@ -34,7 +41,7 @@ const RecipeCard = ({ recipes }) => {
             </Link>
           ))
         : ""}
-    </div>
+    </motion.div>
   );
 };
 
